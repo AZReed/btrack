@@ -15,7 +15,7 @@ function users(state = {}, action) {
     case FETCH_USERS:
       return {
         ...state,
-        users: action.users,
+        users: action.entities.users,
       };
 
     case FETCH_USERS_PAGE:
@@ -31,6 +31,10 @@ function users(state = {}, action) {
         Si hay ya 8 usuarios en la vista, hay que clickear siguiente página para
         poder ver el nuevo usuario, si no, aparecera el nuevo usuario en la vista
       */
+      if (state.users.length < 8) {
+        var users = Object.assign([], state.users)
+        users.push(action.user)
+      }
 
       return {
         ...state,

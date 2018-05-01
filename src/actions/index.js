@@ -12,7 +12,7 @@ const user = new schema.Entity('users');
 export function fetchUsers(q) {
   return dispatch => {
     BeetrackAPI.fetchUsers(q)
-      .then( users => dispatch({ type: FETCH_USERS, users }));
+      .then( users => dispatch({ type: FETCH_USERS, ...normalize(users,[user]) }));
   };
 }
 
