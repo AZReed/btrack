@@ -1,3 +1,4 @@
+import { normalize, schema } from 'normalizr';
 import * as BeetrackAPI from "../utils/BeetrackAPI";
 import {
   FETCH_USERS,
@@ -5,6 +6,8 @@ import {
   DELETE_USER,
   FETCH_USERS_PAGE
 } from "./actionTypes";
+
+const user = new schema.Entity('users');
 
 export function fetchUsers(q) {
   return dispatch => {
@@ -16,7 +19,7 @@ export function fetchUsers(q) {
 export function fetchUsersPage(page) {
   return dispatch => {
    BeetrackAPI.fetchUsersPage(page)
-     .then( users => dispatch({ type: FETCH_USERS_PAGE, users, page }));
+     .then( users => dispatch({ type: FETCH_USERS_PAGE, ...normalize(users,[user]), page }));
  };
 }
 

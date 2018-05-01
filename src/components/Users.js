@@ -34,7 +34,11 @@ class Users extends Component {
   }
 }
 
-function mapStateToProps({ users, page, addedUser }, ownProps) {
+function mapStateToProps({ users = [], page, addedUser }, ownProps) {
+  return { 
+    users: Object.keys(users).map( userId => users[userId])
+  }
+
   if (addedUser && users.length < 8) {
     var modifiedUsers = Object.assign([], users);
     modifiedUsers.push(addedUser);

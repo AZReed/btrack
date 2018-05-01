@@ -21,7 +21,7 @@ function users(state = {}, action) {
     case FETCH_USERS_PAGE:
       return {
         ...state,
-        users: action.users,
+        users: action.entities.users,
         page: action.page
       }
 
