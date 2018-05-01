@@ -1,6 +1,6 @@
 import React from 'react';
-import AddUser from "./AddUser"
-import Search from "./Search"
+import AddUser from "../containers/AddUser"
+import Search from "../containers/Search"
 
 const Menu = () => {
 	return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Input } from "reactstrap";
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import SearchInput from "../components/SearchInput";
 
 class Search extends Component {
 
@@ -9,13 +9,12 @@ class Search extends Component {
     search: ''
   }
 
-  handleSearch(e) {
+  handleSearch = (e) => {
 
     /* 
       Si no hay nada para buscar, trae los usuarios correspondientes a la pagina actual,
       de lo contrario busca todos los usuarios
     */
-    
     if (e.target.value.length === 0) {
       this.props.fetchUsersPage(this.props.page)
     } else {
@@ -26,10 +25,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search">
-        <span className="fas fa-search"></span>
-        <Input type="text" name="contact" id="searchContact" placeholder="Buscar contacto ..." onChange={(e) => this.handleSearch(e)}/>
-    </div>
+      <SearchInput handleSearch={this.handleSearch}/>
     );
   }
 }
