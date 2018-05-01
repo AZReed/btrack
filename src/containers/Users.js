@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import  User from "./User";
 import * as actions from "../actions";
 import { connect } from "react-redux";
-import { Table } from "reactstrap";
+import UsersList from "../components/UsersList";
+import Pagination from "./Pagination";
 
 class Users extends Component {
 
@@ -11,24 +11,16 @@ class Users extends Component {
   }
 
   render() {
-
     const { users } = this.props
-
     return (
       <div>
-        <Table style={{backgroundColor: "white"}} bordered>
-          <thead>
-            <tr>
-              <th style={{borderRight: "none"}}>Nombre</th>
-              <th style={{borderLeft: "none"}}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users && users.map( (user, index) => (
-              <User key={index} user={user}/>
-             ) )}
-          </tbody>
-        </Table>
+        <UsersList
+          deleteUser={this.props.deleteUser}
+          users={users}
+          />
+          <Pagination
+            items={users}
+          />
       </div>
     );
   }
