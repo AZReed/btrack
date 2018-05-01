@@ -10,7 +10,7 @@ from "../actions/actionTypes";
   por lo tanto no hago uso de import { combineReducers } from "redux";
  */
 function users(state = {}, action) {
-  //console.log('reducer',state, action)
+  console.log('reducer',state, action)
   switch (action.type) {
     case FETCH_USERS:
       return {
@@ -26,16 +26,6 @@ function users(state = {}, action) {
       }
 
     case ADD_USER:
-
-      /* 
-        Si hay ya 8 usuarios en la vista, hay que clickear siguiente página para
-        poder ver el nuevo usuario, si no, aparecera el nuevo usuario en la vista
-      */
-      if (state.users.length < 8) {
-        var users = Object.assign([], state.users)
-        users.push(action.user)
-      }
-
       return {
         ...state,
         addedUser: action.user
@@ -43,7 +33,8 @@ function users(state = {}, action) {
 
     case DELETE_USER:
       return {
-        users: state.users.filter( user => user.id !== action.user.id)
+        users: state.users,
+        deletedUser: action.user
       }
 
     default:

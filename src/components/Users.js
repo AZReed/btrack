@@ -34,21 +34,20 @@ class Users extends Component {
   }
 }
 
-function mapStateToProps({ users = [], page, addedUser }, ownProps) {
-  return { 
-    users: Object.keys(users).map( userId => users[userId])
+function mapStateToProps({ users = [], page, addedUser, deletedUser }, ownProps) {
+
+  if (deletedUser && users[deletedUser.id]) {
+    delete users[deletedUser.id];
   }
-/*
-  if (addedUser && users.length < 8) {
-    var modifiedUsers = Object.assign([], users);
-    modifiedUsers.push(addedUser);
+
+  if (addedUser && !users[addedUser.id] && Object.keys(users).length < 8) {
+    users[addedUser.id] = addedUser;
   }
 
   return {
-    users: modifiedUsers || users || [],
+    users: Object.keys(users).map( userId => users[userId]),
     page
-  };
-  */
+  }
 }
 
 export default connect(mapStateToProps, actions)(Users);
