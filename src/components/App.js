@@ -1,8 +1,8 @@
 import React from 'react';
-import Users from "./Users";
-import Pagination from "./Pagination";
+import Users from "../containers/Users";
 import Menu from "./Menu";
 import { Container, Row, Col } from 'reactstrap';
+
 
 const App = props => {
   return (
@@ -12,7 +12,6 @@ const App = props => {
       </Row>
       <Menu />
       <Users />
-      <Pagination />
     </Container>
   );
 }

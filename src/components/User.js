@@ -1,7 +1,5 @@
 import React from 'react';
 import { Media, Button } from "reactstrap";
-import * as actions from "../actions";
-import { connect } from "react-redux";
 
 const User = props => {
 
@@ -27,4 +25,4 @@ const User = props => {
   );
 }
 
-export default connect(null, actions)(User);
+export default User;
