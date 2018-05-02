@@ -19,7 +19,6 @@ class Pagination extends Component {
     let prev_page = page - 1;
     let diff = prevState.page - prev_page;
     if (this.props.items.length === 0 && page !== 1 && diff === 1) {
-      console.log("ALKFjalskdfjalsñ",prevState.page, prev_page)
       this.setState({ page: prev_page, warning: true }, () => this.props.fetchUsersPage(prev_page))
     }
   }
