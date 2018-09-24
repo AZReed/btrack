@@ -3,7 +3,6 @@ import Users from "../containers/Users";
 import Menu from "./Menu";
 import { Container, Row, Col } from 'reactstrap';
 
-
 const App = props => {
   return (
     <Container>

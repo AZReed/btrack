@@ -18,9 +18,9 @@ class Users extends Component {
           deleteUser={this.props.deleteUser}
           users={users}
           />
-          <Pagination
-            items={users}
-          />
+        <Pagination
+          items={users}
+        />
       </div>
     );
   }
