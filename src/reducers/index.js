@@ -10,7 +10,7 @@ from "../actions/actionTypes";
   por lo tanto no hago uso de import { combineReducers } from "redux";
  */
 function users(state = {}, action) {
-  console.log('reducer',state, action)
+  // console.log('reducer',state, action)
   switch (action.type) {
     case FETCH_USERS:
       return {
@@ -33,7 +33,7 @@ function users(state = {}, action) {
 
     case DELETE_USER:
       return {
-        users: state.users,
+        ...state,
         deletedUser: action.user
       }
 

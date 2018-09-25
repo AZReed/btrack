@@ -1,27 +1,56 @@
-import React from 'react';
+import React, {Component} from "react";
 import { Button, Alert } from "reactstrap";
+import Pagination from "../containers/Pagination";
 
-const UsersPagination = (props) => {
-
+const UsersPagination = props => {
   return (
-    <div>
-      <Alert color="warning" isOpen={props.warning} toggle={() => props.onDismiss()}>
+    <Pagination
+      items={props.items}
+      fetchByPage={props.fetchByPage}
+    >
+      {( { warning, onDismiss, nextPageButton, previousPageButton, goToPage } ) => (
+        <React.Fragment>
+               <Alert
+        color="warning"
+        isOpen={warning}
+        toggle={() => onDismiss()}
+      >
         No hay mas datos en la pagina siguiente
       </Alert>
       <div className="clearfix">
-        {(
-          props.previousPageButton
-          ? <Button style={{color: "#a2a2a2"}} color="link" className="float-left" onClick={() => props.goToPage(-1)}><i style={{color: "#fab43d"}} className="fas fa-arrow-circle-left"></i> Página anterior</Button>
-          : null
-        )}
-        {(
-          props.nextPageButton
-          ? <Button style={{color: "#a2a2a2"}} color="link" className="float-right" onClick={() => props.goToPage(1)}>Siguiente página <i style={{color: "#fab43d"}} className="fas fa-arrow-circle-right"></i></Button>
-          : null
-        )}
+        {previousPageButton ? (
+          <Button
+            style={{ color: "#a2a2a2" }}
+            color="link"
+            className="float-left"
+            onClick={() => goToPage(-1)}
+          >
+            <i
+              style={{ color: "#fab43d" }}
+              className="fas fa-arrow-circle-left"
+            />{" "}
+            Página anterior
+          </Button>
+        ) : null}
+        {nextPageButton ? (
+          <Button
+            style={{ color: "#a2a2a2" }}
+            color="link"
+            className="float-right"
+            onClick={() => goToPage(1)}
+          >
+            Siguiente página{" "}
+            <i
+              style={{ color: "#fab43d" }}
+              className="fas fa-arrow-circle-right"
+            />
+          </Button>
+        ) : null}
       </div>
-    </div>
+        </React.Fragment>
+      )}
+    </Pagination>
   );
-}
+};
 
 export default UsersPagination;
