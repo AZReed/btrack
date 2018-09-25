@@ -58,7 +58,8 @@ class AddUser extends Component {
         toggleModel={this.toggleModel}
         modal={this.state.modal}
         alert={this.state.alert}
-      />
+      >
+      </AddUserForm>
     );
   }
 }

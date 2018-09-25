@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, A
 const AddUserForm = (props) => {
   return (
     <div>
-      <Button style={{color:"white", backgroundColor:"#fab43d", borderColor:"#fab43d"}} onClick={() => props.addContact()}>Nuevo Contacto</Button>
+      <Button style={{color:"white", backgroundColor:"#fab43d", borderColor:"#fab43d"}} onClick={() => props.addContact()}><i className="fas fa-plus-circle"></i> Nuevo Contacto</Button>
       <Modal isOpen={props.modal} toggle={() => props.toggleModel()} className={props.className}>
         <ModalHeader>Agregar nuevo contacto</ModalHeader>
         <ModalBody style={{backgroundColor: "#f9f9f9"}}>

@@ -19,10 +19,6 @@ class Users extends Component {
           deleteUser={this.props.deleteUser}
           users={users}
           />
-{/*         <UsersPagination
-          items={users}
-          fetch={this.props.fetchUsersPage}
-        /> */}
         <UsersPagination
           items={users}
           fetchUsersPage={this.props.fetchUsersPage}
@@ -38,7 +34,7 @@ function mapStateToProps({ users = {}, page, addedUser, deletedUser }, ownProps)
     delete users[deletedUser.id];
   }
 
-  if (addedUser && !users[addedUser.id] && Object.keys(users).length < 8) {
+  if (addedUser && !users[addedUser.id] && Object.keys(users).length < 5) {
     users[addedUser.id] = addedUser;
   }
 
