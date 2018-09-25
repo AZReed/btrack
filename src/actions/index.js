@@ -16,9 +16,9 @@ export function fetchUsers(q) {
   };
 }
 
-export function fetchUsersPage(page) {
+export function fetchUsersPage({page, limit}) {
   return dispatch => {
-   BeetrackAPI.fetchUsersPage(page)
+   BeetrackAPI.fetchUsersPage(page, limit)
      .then( users => dispatch({ type: FETCH_USERS_PAGE, ...normalize(users,[user]), page }));
  };
 }

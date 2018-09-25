@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-// import UsersPagination from "../components/UsersPagination";
+import { Component } from 'react';
 
 class Pagination extends Component {
 
@@ -25,7 +24,7 @@ class Pagination extends Component {
     let prev_page = page - 1;
     let diff = prevState.page - prev_page;
     if (this.props.items.length === 0 && page !== 1 && diff === 1) {
-      this.setState({ page: prev_page, warning: true }, () => this.props.fetchByPage(prev_page))
+      this.setState({ page: prev_page, warning: true }, () => this.props.nextAction(prev_page))
     }
   }
 
@@ -34,25 +33,24 @@ class Pagination extends Component {
   }
 
   nextPageButton = () => {
-    return this.props.items.length < 8 ? false : true
+    return this.props.items.length < this.props.itemsPerPage ? false : true
   }
 
   goToPage = (num) => {
     let page = this.state.page
     let result = num === 1 ? page + 1 : page - 1
-    this.setState({ page: result }, () => this.props.fetchByPage(this.state.page))
+    this.setState({ page: result }, () => this.props.nextAction(this.state.page))
   }
 
   render() {
 
-    const {page, warning} = this.state;
+    const { warning } = this.state;
     return this.props.children({
       onDismiss: this.onDismiss,
       goToPage: this.goToPage,
       previousPageButton: this.previousPageButton(),
       nextPageButton: this.nextPageButton(),
-      warning,
-      page,
+      warning
     })
   }
 }

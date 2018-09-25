@@ -8,7 +8,7 @@ import UsersPagination from '../components/UsersPagination';
 class Users extends Component {
 
   componentDidMount() {
-    this.props.fetchUsersPage(this.props.page)
+    this.props.fetchUsersPage({page: this.props.page, limit: 5})
   }
 
   render() {
@@ -25,7 +25,7 @@ class Users extends Component {
         /> */}
         <UsersPagination
           items={users}
-          fetchByPage={this.props.fetchUsersPage}
+          fetchUsersPage={this.props.fetchUsersPage}
         />
       </div>
     );
