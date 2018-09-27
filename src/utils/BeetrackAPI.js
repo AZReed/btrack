@@ -11,7 +11,6 @@ export const fetchUsers = (q = "") =>
     .catch(error => error);
 
 export const fetchUsersPage = (page, limit) => {
-  console.log("API PAGE",page, limit)
   return fetch(`${api}/users?_page=${page}&_limit=${limit}`, { headers })
     .then(res => res.json())
     .catch(error => error);

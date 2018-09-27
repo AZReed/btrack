@@ -2,10 +2,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Estructura de la carpeta
 
+```
 Beetrack
   |
   |- frontend-test-master (Servidor local)
   |- frontend-react (Aplicación React)
+```
 
 ## Instalacion y Uso
 

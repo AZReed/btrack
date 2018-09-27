@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as actions from "../actions";
 import { connect } from "react-redux";
 import UsersList from "../components/UsersList";
-// import Pagination from "./Pagination";
 import UsersPagination from '../components/UsersPagination';
 
 class Users extends Component {
@@ -28,16 +27,7 @@ class Users extends Component {
   }
 }
 
-function mapStateToProps({ users = {}, page, addedUser, deletedUser }, ownProps) {
-
-  if (deletedUser && users[deletedUser.id]) {
-    delete users[deletedUser.id];
-  }
-
-  if (addedUser && !users[addedUser.id] && Object.keys(users).length < 5) {
-    users[addedUser.id] = addedUser;
-  }
-
+function mapStateToProps({ users = {}, page }) {
   return {
     users: Object.keys(users).map( userId => users[userId]),
     page
