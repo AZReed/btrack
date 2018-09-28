@@ -5,7 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Lanzar primero servidor local. https://github.com/Beetrack/frontend-test
 
 ```
-cd frontend-test-master
 npm install
 npm start
 ```
@@ -13,8 +12,6 @@ npm start
 Lanzar después la aplicación React:
 
 ```
-cd ..
-cd frontend-react
 yarn install (o con npm)
 yarn start (o con npm)
 ```
