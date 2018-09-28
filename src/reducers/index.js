@@ -28,7 +28,7 @@ function users(state = {page: 1}, action) {
     case ADD_USER:
 
       let _users_add = Object.assign({}, state.users)
-      _users_add[action.users.id] = action.users
+      _users_add[action.user.id] = action.user
 
       return {
         ...state,
