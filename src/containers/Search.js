@@ -16,7 +16,7 @@ class Search extends Component {
       de lo contrario busca todos los usuarios
     */
     if (e.target.value.length === 0) {
-      this.props.fetchUsersPage({page: this.props.page})
+      this.props.fetchUsersPage({page: this.props.page, limit: this.props.limit})
     } else {
       let query = `q=${e.target.value}`
       this.props.fetchUsers(query)
@@ -30,9 +30,10 @@ class Search extends Component {
   }
 }
 
-function mapStateToProps({ page }) {
+function mapStateToProps({ page, limit }) {
   return {
-    page
+    page,
+    limit
   };
 }
 

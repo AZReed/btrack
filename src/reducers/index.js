@@ -9,7 +9,7 @@ from "../actions/actionTypes";
   He usado en Redux funciones que tienen que ver con un solo tema (users),
   por lo tanto no hago uso de import { combineReducers } from "redux";
  */
-function users(state = {page: 1}, action) {
+function users(state = {page: 1, limit: 5}, action) {
   switch (action.type) {
     case FETCH_USERS:
       return {

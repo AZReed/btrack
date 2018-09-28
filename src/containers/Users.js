@@ -11,7 +11,7 @@ class Users extends Component {
   }
 
   usersWithLimit() {
-    return this.props.users.filter( (user, index) => index <= 4 ? true : false )
+    return this.props.users.filter( (user, index) => index < this.props.limit ? true : false )
   }
 
   render() {
@@ -31,11 +31,12 @@ class Users extends Component {
   }
 }
 
-function mapStateToProps({ users = {}, page, withLimitation }) {
+function mapStateToProps({ users = {}, page, withLimitation, limit }) {
   return {
     users: Object.keys(users).map( userId => users[userId]),
     page,
-    withLimitation
+    withLimitation,
+    limit
   }
 }
 
