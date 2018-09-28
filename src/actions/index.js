@@ -12,14 +12,14 @@ const user = new schema.Entity('users');
 export function fetchUsers(q) {
   return dispatch => {
     BeetrackAPI.fetchUsers(q)
-      .then( users => dispatch({ type: FETCH_USERS, ...normalize(users,[user]) }));
+      .then( users => dispatch({ type: FETCH_USERS, ...normalize(users,[user]), withLimitation: false }));
   };
 }
 
 export function fetchUsersPage({page, limit}) {
   return dispatch => {
    BeetrackAPI.fetchUsersPage(page, limit)
-     .then( users => dispatch({ type: FETCH_USERS_PAGE, ...normalize(users,[user]), page }));
+     .then( users => dispatch({ type: FETCH_USERS_PAGE, ...normalize(users,[user]), page, withLimitation: true }));
  };
 }
 

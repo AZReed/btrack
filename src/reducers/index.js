@@ -10,19 +10,20 @@ from "../actions/actionTypes";
   por lo tanto no hago uso de import { combineReducers } from "redux";
  */
 function users(state = {page: 1}, action) {
-  // console.log('reducer',state, action)
   switch (action.type) {
     case FETCH_USERS:
       return {
         ...state,
         users: action.entities.users,
+        withLimitation: action.withLimitation
       };
 
     case FETCH_USERS_PAGE:
       return {
         ...state,
         users: action.entities.users,
-        page: action.page
+        page: action.page,
+        withLimitation: action.withLimitation
       }
 
     case ADD_USER:

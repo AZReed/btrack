@@ -10,16 +10,20 @@ class Users extends Component {
     this.props.fetchUsersPage({page: this.props.page, limit: 5})
   }
 
+  usersWithLimit() {
+    return this.props.users.filter( (user, index) => index <= 4 ? true : false )
+  }
+
   render() {
-    const { users } = this.props
+    const { users, withLimitation } = this.props
     return (
       <div>
         <UsersList
           deleteUser={this.props.deleteUser}
-          users={users}
+          users={ withLimitation ? this.usersWithLimit() : users}
           />
         <UsersPagination
-          items={users}
+          itemsLength={this.usersWithLimit().length}
           fetchUsersPage={this.props.fetchUsersPage}
         />
       </div>
@@ -27,10 +31,12 @@ class Users extends Component {
   }
 }
 
-function mapStateToProps({ users = {}, page }) {
+function mapStateToProps({ users = {}, page, withLimitation }) {
+  console.log("MAP",withLimitation)
   return {
     users: Object.keys(users).map( userId => users[userId]),
-    page
+    page,
+    withLimitation
   }
 }
 

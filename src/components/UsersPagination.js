@@ -5,7 +5,7 @@ import Pagination from "../containers/Pagination";
 const UsersPagination = props => {
   return (
     <Pagination
-      items={props.items}
+      itemsLength={props.itemsLength}
       itemsPerPage={5}
       nextAction={page => props.fetchUsersPage({page, limit: 5})}
     >

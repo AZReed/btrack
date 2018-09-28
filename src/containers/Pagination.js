@@ -23,7 +23,7 @@ class Pagination extends Component {
     let page = this.state.page;
     let prev_page = page - 1;
     let diff = prevState.page - prev_page;
-    if (this.props.items.length === 0 && page !== 1 && diff === 1) {
+    if (this.props.itemsLength === 0 && page !== 1 && diff === 1) {
       this.setState({ page: prev_page, warning: true }, () => this.props.nextAction(prev_page))
     }
   }
@@ -33,7 +33,7 @@ class Pagination extends Component {
   }
 
   nextPageButton = () => {
-    return this.props.items.length < this.props.itemsPerPage ? false : true
+    return this.props.itemsLength < this.props.itemsPerPage ? false : true
   }
 
   goToPage = (num) => {
@@ -43,7 +43,6 @@ class Pagination extends Component {
   }
 
   render() {
-
     const { warning } = this.state;
     return this.props.children({
       onDismiss: this.onDismiss,
