@@ -2,34 +2,23 @@ import { Component } from 'react';
 
 class Pagination extends Component {
 
-  state = {
-    page: 1,
-    warning: false
-  }
-
   constructor(props){
     super(props)
-    this.onDismiss = this.onDismiss.bind(this)
     this.previousPageButton = this.previousPageButton.bind(this)
     this.nextPageButton = this.nextPageButton.bind(this)
     this.goToPage = this.goToPage.bind(this)
   }
 
-  onDismiss = () => {
-    this.setState({warning: false})
-  }
-
-  componentDidUpdate = (prevProps, prevState) => {
-    let page = this.state.page;
-    let prev_page = page - 1;
-    let diff = prevState.page - prev_page;
-    if (this.props.itemsLength === 0 && page !== 1 && diff === 1) {
-      this.setState({ page: prev_page, warning: true }, () => this.props.nextAction(prev_page))
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    // console.log(this.props, nextProps)
+    /* if (nextProps.page === this.props.page) {
+      return false;
+    } */
+    return true;
   }
 
   previousPageButton = () => {
-    return this.state.page > 1 ? true : false
+    return this.props.page > 1 ? true : false
   }
 
   nextPageButton = () => {
@@ -37,19 +26,17 @@ class Pagination extends Component {
   }
 
   goToPage = (num) => {
-    let page = this.state.page
-    let result = num === 1 ? page + 1 : page - 1
-    this.setState({ page: result }, () => this.props.nextAction(this.state.page))
+    let page = this.props.page
+    let go = num === 1 ? page + 1 : page - 1
+    // this.setState({ page: result }, () => this.props.nextAction(result))
+    this.props.goToAction(go)
   }
 
   render() {
-    const { warning } = this.state;
     return this.props.children({
-      onDismiss: this.onDismiss,
       goToPage: this.goToPage,
       previousPageButton: this.previousPageButton(),
       nextPageButton: this.nextPageButton(),
-      warning
     })
   }
 }

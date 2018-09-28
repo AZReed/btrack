@@ -4,7 +4,7 @@ import { Table } from "reactstrap";
 
 const UsersList = (props) => {
   return (
-    <div>
+    <React.Fragment>
       <Table style={{backgroundColor: "white"}} bordered>
         <thead>
           <tr>
@@ -22,7 +22,7 @@ const UsersList = (props) => {
           ))}
         </tbody>
       </Table>
-    </div>
+    </React.Fragment>
   );
 }
 

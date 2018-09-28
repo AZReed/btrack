@@ -1,25 +1,21 @@
 import React from "react";
-import { Button, Alert } from "reactstrap";
+import { Button } from "reactstrap";
 import Pagination from "../containers/Pagination";
 
 const UsersPagination = props => {
   return (
     <Pagination
       itemsLength={props.itemsLength}
-      itemsPerPage={5}
-      nextAction={page => props.fetchUsersPage({page, limit: 5})}
+      itemsPerPage={props.limitPerPage}
+      page={props.page}
+      goToAction={page => props.fetchUsersPage({page, limit: 5})}
     >
       {({
-        warning,
-        onDismiss,
         nextPageButton,
         previousPageButton,
         goToPage
       }) => (
         <React.Fragment>
-          <Alert color="warning" isOpen={warning} toggle={() => onDismiss()}>
-            No hay mas datos en la pagina siguiente
-          </Alert>
           <div className="clearfix">
             {previousPageButton ? (
               <Button
