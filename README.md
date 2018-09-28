@@ -1,17 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## Estructura de la carpeta
-
-```
-Beetrack
-  |
-  |- frontend-test-master (Servidor local)
-  |- frontend-react (Aplicación React)
-```
-
 ## Instalacion y Uso
 
-Lanzar primero servidor local, dentro de la carpeta Beetrack:
+Lanzar primero servidor local. https://github.com/Beetrack/frontend-test
 
 ```
 cd frontend-test-master
