@@ -32,7 +32,6 @@ class Users extends Component {
 }
 
 function mapStateToProps({ users = {}, page, withLimitation }) {
-  console.log("MAP",withLimitation)
   return {
     users: Object.keys(users).map( userId => users[userId]),
     page,

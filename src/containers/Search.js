@@ -15,7 +15,6 @@ class Search extends Component {
       Si no hay nada para buscar, trae los usuarios correspondientes a la pagina actual,
       de lo contrario busca todos los usuarios
     */
-    console.log("SEARCH",this.props.page)
     if (e.target.value.length === 0) {
       this.props.fetchUsersPage({page: this.props.page})
     } else {
